@@ -1,0 +1,6 @@
+pandas
+snowflake-connector-python[pandas]
+rapidfuzz
+python-dotenv
+pandas
+numpy
