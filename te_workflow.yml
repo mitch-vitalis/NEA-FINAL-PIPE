@@ -1,0 +1,33 @@
+name: Test Tableau KPIs (Manual)
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  test-kpis:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_SF_USER: ${{ secrets.MY_SF_USER }}
+      MY_SF_PASS: ${{ secrets.MY_SF_PASS }}
+      MY_SF_ACCT: ${{ secrets.MY_SF_ACCT }}
+      NEA_SF_USER: ${{ secrets.NEA_SF_USER }}
+      NEA_SF_PASS: ${{ secrets.NEA_SF_PASS }}
+      NEA_SF_ACCT: ${{ secrets.NEA_SF_ACCT }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Test KPI calculator only
+        run: python tableau_kpi_calculator.py
