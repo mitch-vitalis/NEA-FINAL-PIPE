@@ -1,0 +1,3 @@
+nea-snop-pipeline/
+├── .github/workflows/
+│   └── daily_pipeline.yml
